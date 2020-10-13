@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://smtpjs.com/v3/smtp.js">
+        </script>
+    </head>
+    <body style="display: flex;flex-direction: column;">
+        <input type="text" name="" placeholder="Email" id="Email">
+        <input type="text" name="" placeholder="Asunto" id="Asunto">
+        <textarea cols="30" rows="10" id="Text"></textarea>
+        <input type="button" value="enviar" onclick="Enviar()">
+        
+    </body>
+    <script>
+        function Enviar()
+            {
+                Email.send({
+                SecureToken : "15b50171-a11e-4dbf-a5d6-9525e51cff72",
+                To : document.getElementById("Email").value,
+                From : "notificacioneswebapp@gmail.com",
+                Subject : document.getElementById("Asunto").value,
+                Body : document.getElementById("Text").value
+            }).then(
+                message => alert(message)
+            )
+            .catch(e=>console.log(e));
+        }
+    </script>
+</html>
